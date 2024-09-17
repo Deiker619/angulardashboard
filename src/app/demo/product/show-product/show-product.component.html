@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="">
+
+    <table class="table table-striped">
+      <thead class="bg-white">
+        <tr>
+          <th scope="col">Nombre del producto</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Acciones</th>
+
+        </tr>
+      </thead>
+      <tbody class="bg-white">
+        @for (i of products; track $index) {
+          <tr class="bg-white">
+            <th scope="row">{{ i.nameProduct }}</th>
+            <td>{{ i.category }}</td>
+            <td >{{ i.price }}$ c/u</td>
+            <td>{{ i.description }}</td>
+            <td class="d-flex gap-1">
+              <button class="btn btn-sm btn-danger d-flex justify-content-center align-items-center" (click)="onDeleteProduct(i.id, $index)">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+              <a [routerLink]="['/update_product', i.id]" routerLinkActive="router-link-active" ><button class="btn btn-sm btn-primary"><span class="material-symbols-outlined">edit</span></button></a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

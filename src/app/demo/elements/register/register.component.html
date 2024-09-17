@@ -1,0 +1,66 @@
+<div class="row">
+  <!-- [ Typography ] start -->
+  <div class="">
+    <form class="bg-white p-4 border rounded mr-2 ml-2 col-12" [formGroup]="registerProduct" (ngSubmit)="onRegisterProduct()">
+      <h3>Registro de productos</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" autocomplete="name" formControlName="nameProduct" />
+            <label for="floatingInput">Nombre del producto</label>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="form-floating mb-3">
+            <select name="" id="" class="form-control" formControlName="category">
+              <option value="uno">1</option>
+              <option value="dos">2</option>
+              <option value="tres">3</option>
+            </select>
+            <label for="floatingInput">Categoria</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-floating mb-3 inpu-group">
+            <input type="text" autocomplete="transaction-amount" class="form-control" id="floatingInput" formControlName="price" />
+
+            <label for="floatingInput">Precio</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-floating mb-3 inpu-group">
+            <input type="text" autocomplete="transaction-amount" class="form-control" id="floatingInput" formControlName="description" />
+
+            <label for="floatingInput">Descripción</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-secondary d-flex">Registrar producto!</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- <swal 
+  #succeSwall 
+  title="this.message" 
+  [toast]="true" 
+  background="green" 
+  position="bottom-end" 
+  [timer]="3000"  
+  [timerProgressBar]="true"
+  [showConfirmButton]="false"
+  [customClass]="{ title: 'text-white' }">
+</swal>
+<swal 
+  #errorSwal 
+  title="Error en el registro" 
+  [toast]="true" 
+  background="red" 
+  position="bottom-end" 
+  [timer]="3000"  
+  [timerProgressBar]="true"
+  [showConfirmButton]="false"
+  [customClass]="{ title: 'text-white' }">
+</swal>
+ -->
