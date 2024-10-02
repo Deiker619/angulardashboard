@@ -30,7 +30,7 @@ export class RegisterComponent {
   });
 
   ngOnInit() {
-     this.index = this.route.snapshot.params['id']; //Toma el parametro de la ruta en caso de haberlo
+     this.index = this.route.snapshot.params['id']; //Toma el parametro de la ruta en caso de haberlo /* MODO EDICION DE PRODUCTO */
     if (this.index) {
       console.log(this.index);
       this.registerService.getOnlyProduct(this.index)

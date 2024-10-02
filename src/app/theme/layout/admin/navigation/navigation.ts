@@ -45,8 +45,7 @@ const NavigationItems = [
         title: 'Productos',
         type: 'collapse',
         classes: 'nav-item',
-      
-        icon: 'ti ti-dashboard',
+        icon: 'ti ti-building-store',
         children: [
           {
             id: 'registrar-productos',
@@ -64,6 +63,25 @@ const NavigationItems = [
           },
 
         ],
+      
+ 
+      }
+    ]
+  },
+  {
+    id: 'compra',
+    title: 'Compra',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'default',
+        title: '¡Nueva compra!',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/default',
+        icon: 'ti ti-cash',
+        breadcrumbs: true
       
  
       }
