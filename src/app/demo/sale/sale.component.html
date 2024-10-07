@@ -1,0 +1,179 @@
+<div class="row border m-1 ">
+  
+  <div class="p-2">
+    <form class="d-flex justify-content-evenly align-items-center" name="formClient" [formGroup]="clientForm" (ngSubmit)="onRegisterClient()">
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="name" name="name" autocomplete="name" formControlName="name" />
+          <label for="floatingInput">Nombre del cliente</label>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" autocomplete="name" formControlName="last_name" />
+          <label for="floatingInput">Apellido del cliente</label>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" autocomplete="name" formControlName="cedula" />
+          <label for="floatingInput">Cedula del cliente</label>
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-secondary">Registrar cliente</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row border m-1 min-vh-100 position-relative ">
+  <div
+    [ngClass]="{ 'slide-in mb-4': !isActiveInterface, 'slide-out mb-0': isActiveInterface }"
+    style="background-color: rgba(255, 255, 255, 0.5)"
+    class="d-flex justify-content-center align-items-center rounded"
+  >
+    
+    
+    <div class="card text-center w-75 m-0">
+      <div class="card-header ">
+        <p class="fs-3">¡Alerta!</p>
+      </div>
+      <div class="card-body m-0">
+        <h5 class="card-title">No hay cliente</h5>
+        <p class="card-text">Agregue un cliente para proceder a cargarle productos.</p>
+        <label for="name" class="btn btn-primary text-white" >ir a registrar cliente</label>
+      </div>
+      <div class="card-footer text-body-secondary">2 days ago</div>
+    </div>
+  </div>
+
+  <div class="position-relative p-2" [ngClass]="{ 'slide-out': !isActiveInterface }">
+    <div class="position-absolute bottom-0 rounded card end-0 z-3 shadow-sm">
+      <div class="d-flex gap-2 p-2 justify-content-center align-items-center">
+        <div class="">
+          Total a pagar:
+          <b>200$</b>
+        </div>
+        <button class="btn btn-sm btn-success">¡Pagar total de producto!</button>
+      </div>
+    </div>
+
+    <!-- Centro de compras -->
+    <div class="row p-2 align-items-md-left border overflow-y-auto m-0" style="height: 90%">
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,7 @@ export class RegisterComponent {
   registerProduct = new FormGroup({
     nameProduct: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    category: new FormControl('', [Validators.required]),
+    category_id: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   });
 
@@ -84,6 +84,7 @@ export class RegisterComponent {
           });
         },
         error: (error) => {
+          console.log(error)
           this.message = 'Ocurrió un error inesperado';
           showNotification({
             title: this.message,
@@ -102,7 +103,7 @@ export class RegisterComponent {
   procesarProduct(producto: Product){
     this.registerProduct.get('nameProduct')?.setValue(producto.nameProduct)
     this.registerProduct.get('price')?.setValue(producto.price)
-    this.registerProduct.get('category')?.setValue(producto.category)
+    this.registerProduct.get('category_id')?.setValue(producto.category_id)
     this.registerProduct.get('description')?.setValue(producto.description)
   }
 

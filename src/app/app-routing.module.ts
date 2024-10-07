@@ -5,6 +5,7 @@ import { GuestComponent } from './theme/layout/guest/guest.component';
 import { RegisterComponent } from './demo/elements/register/register.component';
 import { ShowProductComponent } from './demo/product/show-product/show-product.component';
 import { UpdateProductComponent } from './demo/product/update-product/update-product.component';
+import { SaleComponent } from './demo/sale/sale.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,11 @@ const routes: Routes = [
       {
         path: 'update_product/:id',
         component: RegisterComponent
+      },
+      {
+        path: 'compra',
+        loadComponent: () => import('./demo/sale/sale.component').then(m => m.SaleComponent),
+        
       }
     ]
   },

@@ -1,0 +1,15 @@
+.slide-in {
+    max-height: 100vh; /* Altura inicial del div */
+    transition: max-height 0.5s ease, transform 0.5s ease;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+  }
+  
+  .slide-out {
+    max-height: 0px;
+    transition: max-height 0.5s ease, transform 0.5s ease;
+    overflow: hidden;
+    display:none; /* Este display se aplica después de que la transición termina */
+    margin: 0;
+  }

@@ -79,7 +79,7 @@ const NavigationItems = [
         title: '¡Nueva compra!',
         type: 'item',
         classes: 'nav-item',
-        url: '/default',
+        url: '/compra',
         icon: 'ti ti-cash',
         breadcrumbs: true
       
