@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="row border m-1 min-vh-100 position-relative ">
+<div class="row border m-1 max-height-100 position-relative border border-black">
   <div
     [ngClass]="{ 'slide-in mb-4': !isActiveInterface, 'slide-out mb-0': isActiveInterface }"
     style="background-color: rgba(255, 255, 255, 0.5)"
@@ -49,6 +49,8 @@
   </div>
 
   <div class="position-relative p-2" [ngClass]="{ 'slide-out': !isActiveInterface }">
+
+
     <div class="position-absolute bottom-0 rounded card end-0 z-3 shadow-sm">
       <div class="d-flex gap-2 p-2 justify-content-center align-items-center">
         <div class="">
@@ -60,16 +62,22 @@
     </div>
 
     <!-- Centro de compras -->
-    <div class="row p-2 align-items-md-left border overflow-y-auto m-0" style="height: 90%">
+    <div class="row p-2 border border-black overflow-y-auto m-0 " style="max-height: 90%; min-height: auto;">
       <div class="col-md-4 col-sm-12 col-lg-3">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="card ">
+          <div class="card-body p-2">
+            <div class="row gap-2 border p-2 border-black">
+              <div class="col-md-6 bg-primary">a</div>
+
+              <div class="col-md-6  border border-black">
+                <button class="btn btn-sm btn-primary">Agregar</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-12 col-lg-3">
+      <!-- <div class="col-md-4 col-sm-12 col-lg-3">
         <div class="card">
           <div class="card-body">
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -173,7 +181,7 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
