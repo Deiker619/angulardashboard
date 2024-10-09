@@ -16,7 +16,7 @@ ReactiveFormsModule;
 })
 export class SaleComponent {
   private clientService = inject(ClientService);
-  isActiveInterface = true;
+  isActiveInterface = false;
   title: string = 'Sale Component';
   client: Client;
 
