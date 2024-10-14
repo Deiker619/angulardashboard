@@ -27,3 +27,7 @@ export function awaitNotification(){
         }
     })
 }
+
+export function closeSwal(){
+  Swal.close()
+}

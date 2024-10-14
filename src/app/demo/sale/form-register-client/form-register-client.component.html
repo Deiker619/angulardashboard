@@ -1,0 +1,28 @@
+<form
+class="d-flex justify-content-evenly align-items-center"
+name="formClient"
+[formGroup]="clientForm"
+(ngSubmit)="onRegisterClient()"
+>
+<div class="col-md-4 col-sm-12 col-lg-3">
+  <div class="form-floating">
+    <input type="email" class="form-control" id="name" name="name" autocomplete="name" formControlName="name" />
+    <label for="floatingInput">Nombre del cliente</label>
+  </div>
+</div>
+<div class="col-md-4 col-sm-12 col-lg-3">
+  <div class="form-floating">
+    <input type="email" class="form-control" id="floatingInput" autocomplete="additional-name" formControlName="last_name" />
+    <label for="floatingInput">Apellido del cliente</label>
+  </div>
+</div>
+<div class="col-md-4 col-sm-12 col-lg-3">
+  <div class="form-floating">
+    <input type="email" class="form-control" id="floatingInput" autocomplete="id" formControlName="cedula" />
+    <label for="floatingInput">Cedula del cliente</label>
+  </div>
+</div>
+<div class="col-auto">
+  <button type="submit" class="btn btn-secondary">Registrar cliente</button>
+</div>
+</form>
