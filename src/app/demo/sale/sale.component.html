@@ -1,10 +1,11 @@
 <div class="row border m-1">
-  <div class="p-2 mb-4">
+  <div class="p-2 m-0">
    <app-form-register-client (activateSale)="setActiveSale()"></app-form-register-client>
   </div>
 </div>
 
 <div class="row  m-1 max-height-100 position-relative  ">
+  
   <div
     [ngClass]="{ 'slide-in mb-4': !isActiveInterface, 'slide-out mb-0': isActiveInterface }"
 
@@ -24,11 +25,12 @@
   </div>
 
   <div class="position-relative p-2" [ngClass]="{ 'slide-out': !isActiveInterface }">
+    <app-cart-sale></app-cart-sale>
     <div class="position-absolute bottom-0 rounded card end-0 z-3 shadow-sm">
       <div class="d-flex gap-2 p-2 justify-content-center align-items-center">
         <div class="">
           Total a pagar:
-          <b>200$</b>
+          <b>{{totalSale   | currency:"USD" }}</b>
         </div>
         <button class="btn btn-sm btn-success">¡Pagar total de producto!</button>
       </div>

@@ -1,0 +1,51 @@
+<div id="styleSelector" class="menu-styler position-absolute top-0 start-0" [ngClass]="{ open: canvas }">
+  <div class="shadow shadow-md rounded">
+    <a href="javascript:" class="btn btn-secondary" (click)="canvas = !canvas">
+      <i class="ti ti-shopping-cart"></i>
+    </a>
+  </div>
+  <div class="style-block">
+    <div class="customize-header">
+      <h3>
+        Carrito de compras
+        <span class="badge text-bg-secondary">{{ price | currency: 'USD' }}</span>
+      </h3>
+      <div class="d-inline-flex align-items-center gap-2">
+        <button type="button" class="btn-close ms-1" aria-label="Close" (click)="canvas = !canvas"></button>
+      </div>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h5 class="mb-1 text-uppercase">Font Style</h5>
+        <p class="text-muted text-sm">Choose theme font</p>
+        <div class="overflow-y-auto" style="max-height: 550px">
+          @for (i of Products; track $index) {
+            <div class="card mb-1 border border-sm" style="max-width: 540px">
+              <div class="row g-0">
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h5 class="card-title border-right border-black">
+                      {{ i.nameProduct }}
+                    </h5>
+
+                    
+                    <p class="card-text mb-0">
+                      <b class="">Cantidad: {{ i.cantidad | number }}</b>
+                    </p>
+                    <p class="card-text mb-0">
+                      <b class="text-secondary">Precio: {{ i.price | currency: 'USD' }}</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <p>+</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
