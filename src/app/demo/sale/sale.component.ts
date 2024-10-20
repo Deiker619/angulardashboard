@@ -23,7 +23,7 @@ export class SaleComponent {
   private clientService = inject(ClientService);
   private cartService = inject(CartService);
 
-  isActiveInterface = true;
+  isActiveInterface = false;
   totalSale: any;
   title: string = 'Sale Component';
   client: Client;

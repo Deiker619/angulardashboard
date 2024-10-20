@@ -24,13 +24,37 @@ export class CartService {
       
     }
     this.cart.next(this.products)
-    this.calculateTotal(Product.price)
+    this.calculateTotal(Product.price, true)
+  }
+  removeProduct(Product: Product) {
+    const findProduct = this.products.find((i) => i.id === Product.id);
+    if (findProduct) {
+      findProduct.cantidad -= this.cantidad;
+    } else {
+      Product.cantidad--
+    }
+
+    if(Product.cantidad == 0){
+      const index = this.products.findIndex((i) => i.id === Product.id);
+      console.log(findProduct)
+      this.products.splice(index, 1)
+      console.log('Cantidad igual a 0')
+    }
+
+    this.cart.next(this.products)
+    this.calculateTotal(Product.price, false)
   }
 
-  calculateTotal(number:number|string){
-    this.total += Number(number) 
-    console.log(this.total)
-    this.priceTotal.next(this.total)
+  calculateTotal(number:number|string, isAdd:boolean):void{
+    if(isAdd){
+      this.total += Number(number) 
+      console.log(this.total)
+      this.priceTotal.next(this.total)
+    }else{
+      this.total -= Number(number) 
+      console.log(this.total)
+      this.priceTotal.next(this.total)
+    }
   }
 
   getTotalSale(){

@@ -32,6 +32,7 @@ export class FormRegisterClientComponent {
     this.client = this.clientForm.value as Client;
     this.clientService.store(this.client).subscribe({
       next: (Response:any)=>{
+        this.clientService.Cliente.next(Response.client);
         closeSwal()
         console.log(Response)
         if(Response){
