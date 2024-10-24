@@ -4,11 +4,12 @@ import { Client } from 'src/app/interfaces/client';
 import { Product } from 'src/app/interfaces/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-cart-sale',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PaymentComponent],
   templateUrl: './cart-sale.component.html',
   styleUrl: './cart-sale.component.scss'
 })
@@ -16,7 +17,7 @@ export class CartSaleComponent {
 
   private CartService = inject(CartService)
   private ClientService = inject(ClientService)
-  cliente: Client  ;
+  cliente: Client;
   price?:number;
   Products: Product[] = []
   canvas: boolean = false;

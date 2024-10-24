@@ -1,7 +1,15 @@
 <div id="styleSelector" class="menu-styler position-absolute top-0 start-0 z-4" [ngClass]="{ open: canvas }">
   <div class="shadow shadow-md rounded">
-    <a href="javascript:" class="btn btn-secondary" (click)="canvas = !canvas">
-      <i class="ti ti-shopping-cart"></i>
+    <a href="javascript:" class="btn btn-light-secondary btn-icon position-relative" (click)="canvas = !canvas">
+      <i class="ti ti-shopping-cart "></i>
+
+      @if (Products.length) {
+
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">
+          {{Products.length}}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      }
     </a>
   </div>
   <div class="style-block " [ngClass]="{ 'z-4': canvas }">
@@ -18,9 +26,10 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
       
-        <h5 class="mb-1 text-uppercase">Cliente: <b>{{cliente?.name + " " + cliente?.last_name || 'cargando..'}}</b></h5>
+        <h5 class="mb-1 text-uppercase">Cliente: <b>{{cliente?.name?? + " " + cliente?.last_name || 'cargando..'}}</b></h5>
         <p class="text-muted text-sm">V- {{cliente?.cedula??'--'}}</p>
-        <div class="overflow-y-auto" style="max-height: 550px">
+        <hr>
+        <div class="overflow-y-auto" style="max-height: 500px">
           @for (i of Products; track $index) {
             <div class="card mb-1 border border-sm" style="max-width: 540px">
               <div class="row g-0">
@@ -56,7 +65,8 @@
           Total a pagar:
           <b>{{ price | currency: 'USD' }}</b>
         </div>
-        <button class="btn btn-sm btn-success">¡Pagar total de producto!</button>
+     
+        <app-payment></app-payment>
       </div>
     </div>
   </div>

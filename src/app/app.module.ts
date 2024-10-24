@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
@@ -20,6 +20,7 @@ import { ConfigurationComponent } from './theme/layout/admin/configuration/confi
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { provideHttpClient } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { provideRouter, withViewTransitions } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     GuestComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule, SweetAlert2Module.forRoot()],
-  providers: [NavigationItem, provideHttpClient()],
+  providers: [NavigationItem, provideHttpClient(), provideRouter(routes, withViewTransitions())],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

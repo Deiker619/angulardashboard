@@ -8,7 +8,7 @@ import { UpdateProductComponent } from './demo/product/update-product/update-pro
 import { SaleComponent } from './demo/sale/sale.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
