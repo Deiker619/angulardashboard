@@ -117,7 +117,7 @@
         
         <div class="col-lg-4  d-flex flex-column justify-content-center align-items-center">
           <p class="fs-1">{{totalSale | currency: 'USD'}}</p>
-          <button  type="button" class="btn btn-success text-center d-inline-flex w-100"><i class="ti ti-circle-check me-1"></i>! Pagar compra! </button>
+          <button (click)="proccesPayment()"  type="button" class="btn btn-success text-center d-inline-flex w-100"><i class="ti ti-circle-check me-1"></i>!Pagar total de la compra! </button>
         </div>
         <div class="col-lg-6 ">
           

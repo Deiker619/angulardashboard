@@ -4,6 +4,7 @@ import { Client } from 'src/app/interfaces/client';
 import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,6 +16,7 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 export class PaymentComponent {
   cartService = inject(CartService)
   clientService = inject(ClientService)
+  paymentService = inject(PaymentService)
   cliente: Client
   totalSale: number = 0;
   togglePayment = false;
@@ -44,5 +46,9 @@ export class PaymentComponent {
 
   closeOrOpenPaymentMethod(){
     this.methodPaymentToggle = !this.methodPaymentToggle
+  }
+
+  proccesPayment():void{
+    this.paymentService.proccesPayment()
   }
 }

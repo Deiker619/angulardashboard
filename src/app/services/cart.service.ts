@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, OnInit } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { BehaviorSubject } from 'rxjs';
+import { RegisterService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class CartService {
   total = 0;
   products: Product[] = [];
   cantidad: number = 1;
+  registerService = inject(RegisterService)
   constructor() { }
 
   addProduct(Product: Product) {

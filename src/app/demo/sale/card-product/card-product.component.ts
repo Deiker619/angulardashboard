@@ -26,7 +26,7 @@ export class CardProductComponent {
     })
     this.registerService.getProduct().subscribe({
       next: (Response: any) => {
-        /* console.log(Response); */
+        console.log(Response);
         this.products = Response.products.map((product: Product) => ({
           ...product,
           cantidad: 0 // Inicializa cantidad en 0
@@ -37,10 +37,7 @@ export class CardProductComponent {
       complete: () => {}
     });
   }
-  ngAfterViewInit(): void {
-    console.log('La vista del componente ha sido inicializada.');
-  }
-
+ 
   addProduct(product: Product){
     this.cartService.addProduct(product)
    
