@@ -11,12 +11,13 @@ import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/interfaces/product';
 import { CartSaleComponent } from './cart-sale/cart-sale.component';
 import { PaymentComponent } from "./payment/payment.component";
+import { SkeletonComponent } from "../skeleton/skeleton.component";
 
 ReactiveFormsModule;
 @Component({
   selector: 'app-sale',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, CartSaleComponent, CardProductComponent, CardComponent, FormRegisterClientComponent, PaymentComponent],
+  imports: [CommonModule, ReactiveFormsModule, CartSaleComponent, CardProductComponent, CardComponent, FormRegisterClientComponent, PaymentComponent, SkeletonComponent],
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.scss'
 })

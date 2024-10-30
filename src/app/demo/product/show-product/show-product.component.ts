@@ -5,15 +5,17 @@ import { RegisterService } from 'src/app/services/product.service';
 import { showNotification, awaitNotification } from 'src/app/interfaces/notification';
 import { RouterLink } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { SkeletonComponent } from "../../skeleton/skeleton.component";
 
 @Component({
   selector: 'app-show-product',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, SkeletonComponent],
   templateUrl: './show-product.component.html',
   styleUrl: './show-product.component.scss'
 })
 export class ShowProductComponent {
+  isLoading: boolean = false;
   products: Product[] = [];
   constructor(private registerService: RegisterService) {}
   /* update = inject(RegisterService) */
@@ -51,12 +53,16 @@ export class ShowProductComponent {
 
 
   ngOnInit() {
+    this.isLoading = false
     this.registerService.getProduct().subscribe({
       next: (Response: any) => {
         this.products = Response.products;
         console.log(this.products);
       },
-      error: (error) => {}
+      error: (error) => {},
+      complete: ()=>{
+        this.isLoading = true
+      }
     });
   }
 }
