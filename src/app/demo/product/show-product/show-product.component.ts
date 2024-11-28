@@ -5,7 +5,8 @@ import { RegisterService } from 'src/app/services/product.service';
 import { showNotification, awaitNotification } from 'src/app/interfaces/notification';
 import { RouterLink } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-import { SkeletonComponent } from "../../skeleton/skeleton.component";
+import { SkeletonComponent } from '../../skeleton/skeleton.component';
+import { finalize, retry } from 'rxjs';
 
 @Component({
   selector: 'app-show-product',
@@ -23,7 +24,7 @@ export class ShowProductComponent {
     awaitNotification();
     console.log(producto, id);
 
-    this.registerService.destroyProduct(producto).subscribe({
+    this.registerService.destroyProduct(producto).pipe(retry(4)).subscribe({
       next: (Response) => {
         console.log(Response);
         this.products.splice(id, 1);
@@ -47,22 +48,30 @@ export class ShowProductComponent {
         });
       }
     });
-
-
   }
 
-
   ngOnInit() {
-    this.isLoading = false
-    this.registerService.getProduct().subscribe({
-      next: (Response: any) => {
-        this.products = Response.products;
-        console.log(this.products);
-      },
-      error: (error) => {},
-      complete: ()=>{
-        this.isLoading = true
-      }
-    });
+    this.isLoading = false;
+    this.registerService
+      .getProduct()
+      .pipe(
+        retry(4),
+      )
+      .subscribe({
+        next: (Response: any) => {
+          this.products = Response.products;
+          console.log(this.products);
+        },
+        error: (error) => {
+          showNotification({
+            icon: 'error',
+            text: 'No pudimos completar el proceso'
+          });
+          this.isLoading = true;
+        },
+        complete: () => {
+          this.isLoading = true;
+        }
+      });
   }
 }

@@ -1,4 +1,4 @@
-import { inject, Injectable, OnInit } from '@angular/core';
+import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { BehaviorSubject } from 'rxjs';
 import { RegisterService } from './product.service';
@@ -7,16 +7,18 @@ import { RegisterService } from './product.service';
   providedIn: 'root'
 })
 export class CartService {
+  
+  activateInterfazProducts = new BehaviorSubject<boolean>(false)
   private cart = new BehaviorSubject<Product[]>([])
   private priceTotal = new BehaviorSubject<number>(0) 
+  dateOfCart = new BehaviorSubject<Object>({})
   total = 0;
   products: Product[] = [];
   cantidad: number = 1;
-  registerService = inject(RegisterService)
   constructor() { }
 
   addProduct(Product: Product) {
-    const findProduct = this.products.find((i) => i.id === Product.id);
+    const findProduct = this.searchProduct(Product)
     if (findProduct) {
       findProduct.cantidad += this.cantidad;
     } else {
@@ -29,7 +31,7 @@ export class CartService {
     this.calculateTotal(Product.price, true)
   }
   removeProduct(Product: Product) {
-    const findProduct = this.products.find((i) => i.id === Product.id);
+    const findProduct = this.searchProduct(Product)
     if (findProduct) {
       findProduct.cantidad -= this.cantidad;
     } else {
@@ -65,4 +67,14 @@ export class CartService {
   getProductOfcart(){
     return this.cart.asObservable()
   }
+  getDateOfCart(){
+    return this.dateOfCart.asObservable()
+  }
+  getActivateInterfazProducts(){
+    return this.activateInterfazProducts.asObservable()
+  }
+  searchProduct(Product){
+   return this.products.find((i) => i.id === Product.id);
+  }
 }
+

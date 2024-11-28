@@ -5,6 +5,8 @@ import { Product } from 'src/app/interfaces/product';
 import { CartService } from 'src/app/services/cart.service';
 import { CommonModule } from '@angular/common';
 import { RegisterService } from 'src/app/services/product.service';
+import { showNotification } from 'src/app/interfaces/notification';
+
 
 
 @Component({
@@ -24,6 +26,7 @@ export class CardProductComponent {
     this.cartService.getProductOfcart().subscribe(r=>{
       console.log(r)
     })
+    
     this.registerService.getProduct().subscribe({
       next: (Response: any) => {
         console.log(Response);
@@ -33,13 +36,19 @@ export class CardProductComponent {
         }));
       },
 
-      error: (error) => {},
+      error: (error) => {
+        showNotification({
+          icon: "error",
+          text: 'No pudimos completar el proceso',
+        })
+      },
       complete: () => {}
     });
   }
  
   addProduct(product: Product){
     this.cartService.addProduct(product)
+    
    
   }
   removeProduct(product: Product){

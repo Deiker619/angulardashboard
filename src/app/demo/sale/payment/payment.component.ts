@@ -27,7 +27,7 @@ export class PaymentComponent {
     this.clientService.getClient().subscribe(
       Response => {
       this.cliente = Response
-      console.log(this.cliente)
+      /* console.log(this.cliente) */
     })
     
     this.cartService.getTotalSale().subscribe((response)=>this.totalSale = response)
@@ -39,7 +39,7 @@ export class PaymentComponent {
       // Después del tiempo de espera, se cambia la variable a true
       setTimeout(() => {
         this.animation = !this.animation;
-        console.log('cargando animacin');
+        /* console.log('cargando animacin'); */
       }, delay);
     
   }
@@ -49,6 +49,6 @@ export class PaymentComponent {
   }
 
   proccesPayment():void{
-    this.paymentService.proccesPayment()
+    this.paymentService.sendPayment()
   }
 }

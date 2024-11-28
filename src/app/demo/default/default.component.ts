@@ -1,5 +1,5 @@
 // Angular Import
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // project import
@@ -16,6 +16,18 @@ import { ChartDataMonthComponent } from './chart-data-month/chart-data-month.com
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent {
+  setJose(){
+    this.signal.set({
+      ...this.signal(),
+      name:'Jose'
+      
+    })
+  }
+
+  signal = signal({
+    name: 'Deiker',
+    lastName: 'Fernandez'
+  }) 
   // public method
   ListGroup = [
     {

@@ -1,9 +1,10 @@
 
 import { CommonModule } from '@angular/common';
-import { Component, inject, EventEmitter, Output  } from '@angular/core';
+import { Component, inject,  OnDestroy  } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Client } from 'src/app/interfaces/client';
 import { showNotification, awaitNotification, closeSwal } from 'src/app/interfaces/notification';
+import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
@@ -13,12 +14,12 @@ import { ClientService } from 'src/app/services/client.service';
   templateUrl: './form-register-client.component.html',
   styleUrl: './form-register-client.component.scss'
 })
-export class FormRegisterClientComponent {
-
+export class FormRegisterClientComponent implements OnDestroy {
+  title = 'Form-register'
+  private cartService = inject(CartService);
   private clientService = inject(ClientService);
   client: Client;
 
-  @Output() activateSale = new EventEmitter<boolean>()
 
 
   clientForm = new FormGroup({
@@ -26,28 +27,30 @@ export class FormRegisterClientComponent {
     last_name: new FormControl('', [Validators.required]),
     cedula: new FormControl('', [Validators.required])
   });
+  
 
   onRegisterClient() {
     awaitNotification()
     this.client = this.clientForm.value as Client;
     this.clientService.store(this.client).subscribe({
       next: (Response:any)=>{
-        this.clientService.Cliente.next(Response.client);
+        this.clientService.Cliente.next(Response.client); //Emite los datos del cliente a sus subscriptores
+        this.cartService.dateOfCart.next(Response.cart); //Emite los datos del carrito a sus subscriptores
         closeSwal()
-        console.log(Response)
         if(Response){
           showNotification({
             icon: 'success',
             title: Response.message + " " + this.client.name,
             didClose: () => {//Cuando se cierre la notificacion
               //
-              this.activateSale.emit(true)
+              this.cartService.activateInterfazProducts.next(true)
             }
 
           })
           
         }
       },
+      
       error: (error)=>{
         closeSwal()
         showNotification({
@@ -66,4 +69,10 @@ export class FormRegisterClientComponent {
     })
     
   }
+
+  ngOnDestroy():void{
+    console.log('Destruyo el ' + this.title)
+  }
+
+  
 }

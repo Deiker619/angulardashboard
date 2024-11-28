@@ -44,7 +44,7 @@ export const routes: Routes = [
       },
       {
         path: 'update_product/:id',
-        component: RegisterComponent
+        loadComponent: ()=>import('./demo/elements/register/register.component').then(m => m.RegisterComponent)
       },
       {
         path: 'compra',

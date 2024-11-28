@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Client } from 'src/app/interfaces/client';
 import { Product } from 'src/app/interfaces/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 import { PaymentComponent } from '../payment/payment.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-sale',
@@ -13,8 +14,9 @@ import { PaymentComponent } from '../payment/payment.component';
   templateUrl: './cart-sale.component.html',
   styleUrl: './cart-sale.component.scss'
 })
-export class CartSaleComponent {
-
+export class CartSaleComponent implements OnDestroy{
+ title = 'cart-sale'
+  private a: Subscription;
   private CartService = inject(CartService)
   private ClientService = inject(ClientService)
   cliente: Client;
@@ -23,12 +25,12 @@ export class CartSaleComponent {
   canvas: boolean = false;
 
   ngOnInit():void{
-    this.ClientService.getClient().subscribe((r)=>{
+    this.a = this.ClientService.getClient().subscribe((r)=>{
       this.cliente = r
       console.log(this.cliente)
       
     })
-    this.CartService.getTotalSale().subscribe(r =>{
+      this.CartService.getTotalSale().subscribe(r =>{
       this.price = r
     })
     this.CartService.getProductOfcart()
@@ -38,5 +40,9 @@ export class CartSaleComponent {
       },
 
     })
+  }
+
+  ngOnDestroy():void{
+    console.log('Destruyo el ' + this.title)
   }
 }
