@@ -19,8 +19,8 @@ import { CartSaleComponent } from './cart-sale/cart-sale.component';
   styleUrl: './sale.component.scss'
 })
 export class SaleComponent {
+  
   private cartService = inject(CartService);
-
   isActiveInterface = false;
   totalSale: any;
   title: string = 'Sale Component';
