@@ -30,7 +30,7 @@ const NavigationItems = [
         classes: 'nav-item',
         url: '/default',
         icon: 'ti ti-dashboard',
-        breadcrumbs: true
+        breadcrumbs: false
       }
     ]
   },
